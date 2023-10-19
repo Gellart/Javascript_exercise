@@ -83,7 +83,7 @@ let finalOutput = checkNumbers( input_1, input_2 );
 
 
 
-
+/*
 
 // **Esercizio 3**
 
@@ -93,7 +93,34 @@ let finalOutput = checkNumbers( input_1, input_2 );
 
 // Il primo parametro relativo alla frase deve essere inserito tramite prompt.
 
+// variables 
+let textFromUser = prompt( `write something` );
+let characterFromUser = prompt( `write the character that you wanna count` );
 
+// function that count the character that we want
+function countCharacter( text,  character ){
+
+    let count = 0;
+
+    // cycle of the text write by the user
+    for (let i = 0; i < text.length; i++) {
+        // switch case for control the condition
+        switch (text.charAt(i)) {
+            case character:
+                count++;
+        }
+        
+    }
+
+    return count;
+
+}
+
+// variable that contain the call of the function
+let countResult = countCharacter( textFromUser, characterFromUser );
+console.log( ` there are  ${countResult} character of ${characterFromUser}` );
+
+*/
 
 
 /*
@@ -111,6 +138,27 @@ let finalOutput = checkNumbers( input_1, input_2 );
 
 Math.PI // è un dato statico che ci mette a disposizione Javascript del valore di circa 3.14159
 Math.pow() // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow
+
+// variables
+let userRadius = parseInt( prompt( `write a number of radius` ) );
+let userPrecision = parseInt( prompt( `write the number that you want after the comma` ) );
+
+// function that calculate the area of the circle
+function calculateArea( radius , precision = 3 ){
+
+    // calculate the circle area
+    let circleArea = Math.PI * Math.pow( radius, 2 );
+
+    // too many numbers after the comme, let's fix that
+    let result = circleArea.toFixed( precision );
+
+    return `the area of the circle is ${result}`;
+
+}
+
+// variable that contain the function 
+let result = calculateArea( userRadius, userPrecision );
+console.log( result );
 
 */
 
@@ -149,7 +197,6 @@ Math.pow() // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 //     - espulsione: false (boolean)
 
 // - Risultato: 14.5
-
 
 
 
