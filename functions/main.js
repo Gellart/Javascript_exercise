@@ -163,7 +163,7 @@ console.log( result );
 */
 
 
-
+/*
 
 // **Esercizio 5**
 
@@ -192,11 +192,50 @@ console.log( result );
 //     - baseVoto: 8
 //     - golFatti: 2
 //     - assistEffettuati: 1
-//     - autogol: 0
+//     - autogol: -2
 //     - ammonizione: true (boolean)
 //     - espulsione: false (boolean)
 
 // - Risultato: 14.5
+
+
+// variables
+let playerName = prompt( ` write your name` )
+let playerBaseVoto = parseInt( prompt( `insert base point` ) );
+let playerGolFatti = parseInt( prompt( `goal` ) );
+let playerAssistEffettuati = parseInt( prompt( `assist` ) );
+let playerAutogol = parseInt( prompt( `autogoal` ) );
+let playerAmmonizione = parseInt( prompt( `yellow card` ) );
+let playerEspulsione = parseInt( prompt( `red card` ) );
+
+function playerPoint( player,  baseVoto, golFatti, assistEffettuati, autogoal, ammonizione, espulsione ){
+
+    let finalResult = baseVoto;
+
+    // +3 points for each goal
+    finalResult += ( golFatti * 3 );
+    // +1 points for each assist
+    finalResult +=  assistEffettuati;
+    // remove 1 point for each autogoal
+    finalResult -= autogoal;
+    // if there is a yellow card , remove 1 point
+    if ( ammonizione ) {
+        finalResult -= 1;
+    }
+
+    // if there is a red car, remove 2 point
+    if ( espulsione ) {
+        finalResult -= 2;
+    }
+
+    return finalResult;
+
+}
+
+let playerPointResult = playerPoint( playerName, playerBaseVoto, playerGolFatti, playerAssistEffettuati, playerAutogol, playerAmmonizione, playerEspulsione );
+console.log( `Player ${playerName}` + `\n` + `Base point ${playerBaseVoto}` + `\n` + `Goal ${playerGolFatti}` + `\n` + `Assist ${playerAssistEffettuati}` + `\n` + `Autogoal ${playerAutogol}` + `\n` + `Yellow card ${playerAmmonizione}` + `\n` + `Red card ${playerEspulsione}` + `\n` + `Total ${playerPointResult}`  );
+
+*/
 
 
 
@@ -210,7 +249,7 @@ console.log( result );
 
 
 
-
+/*
 
 // **Esercizio 7 - BONUS**
 
@@ -224,43 +263,39 @@ console.log( result );
 
 // usare prompt("Inserisci 'Pari' o 'Dispari':"); come richiesta all'utente
 
+// variables
+let userAnswer = prompt( `the number that will apperar is even or odd??` );
+
+// generate random number 
+function generateRandomNumber( ){
+
+    let randomNumber = Math.ceil(Math.random(1)*10);
+
+    return randomNumber;
+
+}
+
+// save the function on a variable
+let number = generateRandomNumber();
+alert( number );
+
+// minigame function
+function minigame( answer, finalNumber ){
+    // if the number is even return well done, else sorry try again
+    if ( answer == `even` && finalNumber % 2 == 0 ) {
+        alert( `Answer ${answer}` + `\n` + `Number ${finalNumber}` );
+        alert( `well done` );
+    } else{
+        alert( `Answer ${answer}` + `\n` + `Number ${finalNumber}` );
+        alert( `sorry try again` );
+    }
+        
+
+}
 
 
+let finalResult = minigame( userAnswer, number );
+
+*/
 
 
-
-// **Esercizio 8 - BONUS**
-
-// Creiamo la nostra console stilosa!!!
-
-// - (hint: [https://www.codingem.com/javascript-consolecolors/](https://www.codingem.com/javascript-console-colors/))
-
-// Scrivi un programma chiamato “myLog” che ci permetta di loggare dei messaggi di testo con uno stile dinamico in base alla categoria specificata.
-
-// Le categorie disponibili dovranno essere le seguenti con le relative caratteristiche:
-
-// - **titolo**:
-    
-//     background-color: blue;
-    
-//     font-size: 30px;
-    
-//     color: white
-    
-// - **sottotitolo**:
-    
-//     font-size: 20px;
-    
-//     color: blue;
-    
-// - **highlight**:
-    
-//     background-color: orange;
-    
-// - **disastro**:
-    
-//     background-color: red;
-    
-//     font-size: 50px;
-    
-//     color: white
