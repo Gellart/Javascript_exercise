@@ -269,3 +269,52 @@ const result = calculatePoints( points );
 console.log( result );
 
 */
+
+
+
+// **Esercizio 7 - BONUS**
+
+// I personaggi di Street Fighter!
+
+// Converti questa stringa in un array:
+
+// ```jsx
+// let myString = 'Ryu+Ken+Chun-Li+Cammy+Guile+Sakura+Sagat+Juri';
+// ```
+
+// - Memorizza la lunghezza dell’array ottenuto in una variabile chiamata `arrayLength`;
+// - Memorizza l’ultimo elemento dell’array in una variabile chiamata `lastItem`;
+
+
+let myString = 'Ryu+Ken+Chun-Li+Cammy+Guile+Sakura+Sagat+Juri';
+// covert the string into array with split() method
+let convertToArray = myString.split(`+`);
+console.log(convertToArray);
+
+// save the length of the array on variable
+let arrayLength = convertToArray.length;
+console.log( `the lenght of the array is ${arrayLength}` );
+
+// save the last element of the array in the variable
+let lastElement = convertToArray.slice(-1);
+console.log( `the last element of the array is ${lastElement}` );
+
+// **Esercizio 8 - BONUS**
+
+// Con l’array ottenuto dall’esercizio precedente:
+
+// - rimuovi l’ultimo elemento dell’array
+// - aggiungi due nomi da te scelti alla fine dell’array
+// - aggiungi due nomi all’inizio dell’array
+
+// remove the last element of the array with the pop() method
+let removeLastElement = convertToArray.pop();
+console.log( convertToArray );
+
+// add 2 name at the end of the array with the push method
+let add2NamesLast = convertToArray.push(`Zeku`, `Blair Dame`);
+console.log( convertToArray );
+
+// add 2 elements at the beginning of the array with the unshift mehod
+let add2NamesBeginning = convertToArray.unshift( `Gino`, `Peppino` );
+console.log( convertToArray );
