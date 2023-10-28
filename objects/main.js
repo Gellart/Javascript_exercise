@@ -468,3 +468,115 @@ console.log( calculatePlayersPoints(bowling) );
 console.log( checkWinner(bowling) );
 
 */
+
+
+
+// **Esercizio 3**
+
+// Il Calendario Settimanale
+
+// - Scrivi un oggetto contenente i giorni della settimana.
+// - Ogni giorno sarà un array al quale gli si potrà aggiungere un evento.
+
+// L’evento sarà un oggetto contenente le chiavi
+
+// - nomeEvento
+// - inizioEvento (formato “08:00”)
+
+// {
+// 	nomeEvento: "Lezione",
+// 	inizioEvento: "18:30"
+// }
+
+// Il programma dovrà permettere di:
+
+// - aggiungere singoli eventi per un determinato giorno.
+
+// ricordate che potete accedere alle proprietà di un oggetto:
+// object["key"];
+
+// BONUS: all’inserimento di questi bisognerà ordinare l’array in modo 
+// che l’orario di inizio sia una successione ordinata
+
+/*
+
+Il metodo sort() itera sull'array, passando ogni volta due valori adiacenti alla funzione di confronto. 
+La funzione di confronto valuta quindi la differenza tra il primo valore e il secondo. Questo determinerà se la funzione 
+restituisce un valore positivo, negativo o neutro.
+Se il valore restituito è positivo, significa che il primo valore è maggiore del secondo. 
+Ad esempio, se confronti 7 e 4, ottieni 3. 
+Pertanto, il primo valore viene posizionato dopo il secondo nell'ordine crescente.
+Se il valore restituito è negativo, significa che il primo valore è minore del secondo. 
+Ad esempio, se confronti 2 e 7, ottieni -5. 
+Pertanto, il primo valore viene posizionato prima del secondo nell'ordine crescente.
+Un valore neutro, o zero, indica che i due valori sono uguali, quindi l'ordine non ha bisogno di essere modificato.
+
+*/
+
+// .sort(function(a, b) {
+//     return a.inizioEvento - b.inizioEvento;
+// });
+
+// - filtrare gli eventi di una specifica giornata.
+// - cercare gli eventi per nome: questa funzione mi ritornerà le eventuali occorrenze, 
+// dell’evento, divise per giornata.
+
+// ricordate che potete ciclare un oggetto
+// for(let key in object) {
+// 	// ...
+// }
+
+// potrebbe tornarvi utile
+// .filter(evento => {
+// 	// ...
+// });
+
+// TIP: lavorate con le funzioni, per esempio per aggiungere un evento fate una funzione 
+// aggiungiEvento() o addEvent()  
+
+
+// days of the week obj
+const week = {
+
+    Monday : [],
+    Tuesday : [],
+    Wednesday : [],
+    Thursday : [],
+    Friday : [],
+    Saturday : [],
+    Sunday : []
+
+}
+
+// user input variables
+let dayOfEvent = prompt( `write the day of the event` );
+let userEvent = prompt( `write the name of the event` );
+let userEventTime = prompt( `write the event time` );
+
+// obj event
+class Event  {
+    constructor (nameEvent, startEvent) {
+        this.nameEvent = nameEvent;
+        this.startEvent = startEvent;
+    }
+};
+
+// function for pushing the obj event in the days array
+const pushEvents = (event, daysOfTheWeek) =>{
+    week[daysOfTheWeek].push(event);
+};
+
+// function that order the events
+const orderEvents = (week, day) =>{
+ week[day].sort(function(a,b){
+    return a["startEvent"].replace(/:/g, '') - b["startEvent"].replace(/:/g, '');
+ });
+ console.log(week);
+};
+
+// create obj using the constructor event
+let event1 = new Event( userEvent, userEventTime );
+let event2 = new Event( userEvent, userEventTime );
+
+console.log(pushEvents(event1, dayOfEvent));
+console.log(pushEvents(event2, dayOfEvent));
