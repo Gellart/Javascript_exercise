@@ -309,6 +309,9 @@ console.log(findCategory(userCategory));
 
 */
 
+
+/*
+
 // **Esercizio 1**
 
 // Scrivi una funzione Javascript che stampi in console se un libro è stato letto o meno 
@@ -381,3 +384,87 @@ const readingStatus = (library)=> {
 
 console.log(checkLibrary());
 console.log( readingStatus(library) );
+
+*/
+
+
+/*
+
+// **Esercizio 2**
+
+// Definisci un oggetto che rappresenti una sala da bowling, 
+// dovrà contenere un’array di giocatori che saranno formati dalle proprietà, nome e punteggi.
+
+// Creare una funzione che calcoli il totale di ogni giocatore 
+// e estragga il vincitore della partita.
+
+// const bowling = {
+//     players: [
+//         { name: "Giocatore 1", scores: [10, 7, 9, 7, 6, 10, 10, 9, 10, 8, 7, 10, 10, 10, 9, 8, 10] },
+//         { name: "Giocatore 2", scores: [9, 8, 10, 10, 7, 10, 10, 10, 9, 10, 8, 7, 10, 10, 10, 9, 10] },
+//         { name: "Giocatore 3", scores: [10, 10, 7, 8, 10, 7, 9, 8, 10, 10, 10, 9, 8, 10, 10, 10, 7] }
+//     ]
+// };
+
+// Expected output: Il Vincitore è il Giocatore 2 con 157 punti totali
+
+// **TIP**: LAVORATE CON LE FUNZIONI.
+
+// Ad es: `checkWinner(bowling)`
+
+// **TIP**: Aggiungete una proprietà `total` per ogni oggetto Player `{ name: “xxx”, scores: [7, 9, 10], total: 123 }`
+
+
+const bowling = {
+    players: [
+        { name: "Giocatore 1", scores: [10, 7, 9, 7, 6, 10, 10, 9, 10, 8, 7, 10, 10, 10, 9, 8, 10] },
+        { name: "Giocatore 2", scores: [9, 8, 10, 10, 7, 10, 10, 10, 9, 10, 8, 7, 10, 10, 10, 9, 10] },
+        { name: "Giocatore 3", scores: [10, 10, 7, 8, 10, 7, 9, 8, 10, 10, 10, 9, 8, 10, 10, 10, 7] }
+    ]
+};
+
+
+// function for calculate the players points
+const calculatePlayersPoints = (bowling)=> {
+
+    // cycle the players array
+    bowling.players.forEach(player => {
+        console.log(player.name);
+        // save the scores array in this variable
+        let points = player.scores;
+        // create a counter variable for calculate the number inside the scores array
+        let counter = 0;
+        // cycle the scores array
+        points.forEach(point => {
+            // calculate the number on the array 
+            counter += parseInt(point);
+        });
+        console.log(counter) ;
+        player.total = counter;
+        
+    });
+}
+
+
+// function for check the winner
+const checkWinner = (bowling)=> {
+    // variable for the player
+    let players = bowling.player;
+    // variable for the total points
+    let total = players.map(player => player.total);
+    // variable for the best score
+    let bestScore = Math.max(total);
+    console.log(bestScore);
+    // cycle of player array
+    players.forEach(player => {
+        // condition, if the total point is the same of best score, return something
+        if (player.total === bestScore) {
+            console.log( `Name: ${player.name}` + `\n` + `Score: ${player.scores}` + `\n` + `Total: ${player.total}` );
+        };
+    });
+}
+
+console.log( calculatePlayersPoints(bowling) );
+console.log( checkWinner(bowling) );
+
+*/
