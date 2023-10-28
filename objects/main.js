@@ -192,6 +192,7 @@ allModelS(garage);
 
 */
 
+/*
 
 // **Esercizio 4**
 
@@ -305,3 +306,78 @@ const findCategory = (userCategory)=> {
 }
 
 console.log(findCategory(userCategory));
+
+*/
+
+// **Esercizio 1**
+
+// Scrivi una funzione Javascript che stampi in console se un libro è stato letto o meno 
+// controllando la proprietà dell’oggetto `readingStatus`
+
+// const library = [ 
+//     {
+//         title: 'Bill Gates',
+//         author: 'The Road Ahead',
+//         readingStatus: true
+//     },
+//     {
+//         title: 'Steve Jobs',
+//         author: 'Walter Isaacson',
+//         readingStatus: true
+//     },
+//     {
+//         title: 'Mockingjay: The Final Book of The Hunger Games',
+//         author: 'Suzanne Collins',
+//         readingStatus: false
+//     }
+// ];
+
+// - Se la proprietà è true allora stampare a console:
+// `${titolo del libro} di ${autore del libro} è stato letto!`
+// - Se la proprietà è false allora stampare a console:
+    
+//     `${titolo del libro} di ${autore del libro} non è ancora stato letto!`
+
+
+const library = [ 
+    {
+        title: 'Bill Gates',
+        author: 'The Road Ahead',
+        readingStatus: true
+    },
+    {
+        title: 'Steve Jobs',
+        author: 'Walter Isaacson',
+        readingStatus: true
+    },
+    {
+        title: 'Mockingjay: The Final Book of The Hunger Games',
+        author: 'Suzanne Collins',
+        readingStatus: false
+    }
+];
+
+// with this function see all the title of books in the array of obj
+const checkLibrary = ()=> {
+    // cycle all the library array
+    library.forEach(book => {
+        console.log( `Title : ${book.title}` );
+    });
+
+}
+
+// function that check if the book has been read or not
+const readingStatus = (library)=> {
+    // cycle all the library
+    library.forEach(book => {
+        // condition, if is true or false return something
+        if (book.readingStatus == true) {
+            console.log( `${book.title} of ${book.author} it was read!` )
+        } else {
+            console.log( `${book.title} of ${book.author} it was read!` )
+        };
+    });
+}
+
+console.log(checkLibrary());
+console.log( readingStatus(library) );
