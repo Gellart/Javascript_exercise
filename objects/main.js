@@ -534,7 +534,7 @@ Un valore neutro, o zero, indica che i due valori sono uguali, quindi l'ordine n
 // TIP: lavorate con le funzioni, per esempio per aggiungere un evento fate una funzione 
 // aggiungiEvento() o addEvent()  
 
-
+/*
 // days of the week obj
 const week = {
 
@@ -580,3 +580,28 @@ let event2 = new Event( userEvent, userEventTime );
 
 console.log(pushEvents(event1, dayOfEvent));
 console.log(pushEvents(event2, dayOfEvent));
+
+*/
+
+
+
+// **Esercizio 1**
+
+// - Crea un oggetto attraverso il metodo costruttore (o function o class) di un Garage.
+// - Nel Garage ci dovranno essere almeno le seguenti proprietà:
+//     - Nome del Garage
+//     - Max posti disponibili: 10
+//     - Array di veicoli
+// - Creare poi un costruttore di un Automobile con le seguenti proprietà:
+//     - Brand
+//     - Model
+//     - Year
+// - Fare una funzione che aggiunga dinamicamente le automobili all’array di veicoli del Garage.
+// - Nell’esecuzione della precedente funzione tenere in considerazione i max posti disponibili ed intercettare l’errore.
+
+// TIP: potete approcciare all’esercizio in diversi modi. 
+// O create semplicemente delle funzioni per aggiungere il veicolo oppure 
+// potete sbizzarrirvi con il prompt e far inserire all’utente i dati del veicolo. 
+// (ricordatevi che potrebbe esservi d’aiuto il while).
+
+
