@@ -318,6 +318,8 @@ myConsole.log("Hello world");
 */
 
 
+/*
+
 // 1. Create a class called "Animal"
 
 //     2. Allow us to pass in 2 properties/fields to the
@@ -347,4 +349,161 @@ class Animal {
 }
 
 let shark = new Animal("fish", "Greate withe shark");
-console.log( shark);
+for(const prop in shark){
+    const value = shark[prop];
+    console.log(value);
+}
+
+*/
+
+
+/*
+
+// 1. Create a class called "Student"
+
+// 2. Allow us to pass in 3 properties / fields to the
+//        Student constructor which get set to the instance:
+// - name(String)
+//     - major(String)
+//     - grades(Array of Numbers)
+
+// 3. Create a method on "Student" called "addGrade" that
+//        has one paramater "grade".It will simply push the
+// "grade" given on to the "grades" Array.
+
+//     4. Create a method on "Student" called "gpa" that will
+// return the AVERAGE grade of the student's "grades"
+
+// 5. Create an instance of the Student class like so:
+// const eva = new Student("Eva", "Arts", [95, 75, 83])
+
+// 4. Print out the "eva" instance
+
+// 6. Use the "gpa" method on "eva" to print out their average
+// grade(Should be 84.33)
+
+
+// student class
+class Student {
+    constructor(name, major, grades){
+
+        this.name = name;
+        this.major = major;
+        this.grades = grades;
+
+    };
+
+    addGrade(grade){
+        this.grades.push(grade);
+    };
+
+    gpa(){
+        // let's create a variable for the count
+        let averageGrade = 0;
+        // the for...of statement executes a loop that operates on a sequence of values
+        for(const prop of this.grades){
+            // the for of loop cycle the array sequentially, after that let's do the matemathics operation
+            averageGrade += prop;
+        }
+        return averageGrade / this.grades.length;
+    }
+
+}
+
+const eva = new Student("Eva", "Arts", [95, 75, 83]);
+for(const prop in eva){
+    const value = eva[prop];
+    console.log(value);
+}
+
+console.log(eva.gpa());
+console.log(eva.addGrade(10));
+
+*/
+
+
+/*
+
+// 1. Create a class called "Bookstore"
+
+// 2. The "Bookstore" constructor has a single parameter
+//        called "books" which is an Array of Book Objects.
+//        Assign the argument passed in to the instance within
+//        the constructor.
+
+// 3. Create a "listBooks" method on the "Bookstore" class
+//     that will loop through and print out all the Books
+//         in the Store(assume they have a name and author)
+//        so you can format each like this:
+// `${book.name} by ${book.author}`
+
+// 3. Create another class called "Book"
+
+// 4. The "Book" constructor has 2 parameters:
+// - name
+//     - author
+//        Assign these to the instance within the constructor
+
+// 5. Create 2 Books:
+// const nineteen84 = new Book("1984", "George Orwell")
+// const hp = new Book("Harry Potter", "J.K. Rowling")
+
+// 6. Create a Bookstore:
+// const bookstore = new Bookstore([nineteen84, hp])
+
+// 7. Call bookstore.listBooks() and make sure it works:
+// 1984 by George Orwell
+//        Harry Potter by J.K.Rowling
+
+
+
+// Bookstore class
+class Bookstore {
+    constructor(books){
+        this.books = books;
+    };
+
+    // listBooks method, that loop through and print out all the Books in the Store
+    listBooks() {
+        for(const prop of this.books){
+            prop.displayBook();
+        }
+    }
+
+}
+
+// Book class
+class Book {
+    constructor(name, author){
+        this.name = name;
+        this.author = author;
+    }
+
+    displayBook(){
+        console.log(`${this.name} by ${this.author}`);
+    }
+}
+
+// let's create dome books using the constructor
+let book1 = new Book("1984", "George Orwell");
+let book2 = new Book("Harry Potter", "J.K. Rowling"); 
+
+let bookStore = new Bookstore([book1, book2]);
+bookStore.listBooks();
+
+*/
+
+
+
+
+// **Esercizio 1**
+
+// Definisci un oggetto **playlist** che contiene una proprietà **canzoni**. La prorietà canzoni dovrà essere un array.
+
+// Inserisci una o 2 canzoni in maniera dinamica e ciascuna deve avere le seguenti proprietà:
+
+// - titolo
+// - nomeCantante
+// - anno
+
+// Ad ogni canzone inserita stampa in console tutte le canzoni.
