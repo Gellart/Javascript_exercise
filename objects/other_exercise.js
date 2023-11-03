@@ -42,7 +42,6 @@ for( const prop in mexico){
 
 */
 
-
 /*
 
 // 1. Create an object called "myPet" with the following properties:
@@ -95,9 +94,6 @@ console.log(myPet);
 
 */
 
-
-
-
 // 1. Create the following 3 objects:
 // - const banana = { name: "banana", quantity: 1, price: 1.95 }
 //     - const apple = { name: "apple", quantity: 1, price: 1.45 }
@@ -123,9 +119,6 @@ console.log(myPet);
 // 8. Change the price of the candy object directly to be 4.99
 
 // 9. Print out both "store" and "candy"
-
-
-
 
 /*
 
@@ -211,7 +204,6 @@ console.log(candy);
 
 */
 
-
 /*
 
 // 1. Create an object called "houseForSale" with the following properties:
@@ -285,7 +277,6 @@ for(const prop in houseForSale){
 
 */
 
-
 /*
 
 // 1. Create an object called "myConsole"
@@ -316,7 +307,6 @@ const myConsole = {
 myConsole.log("Hello world");
 
 */
-
 
 /*
 
@@ -355,7 +345,6 @@ for(const prop in shark){
 }
 
 */
-
 
 /*
 
@@ -470,7 +459,6 @@ playlist.songs.forEach(song => {
 
 */
 
-
 /*
 
 // **Esercizio 2**
@@ -571,7 +559,6 @@ checkArray();
 
 
 
-
 // **Esercizio 3**
 
 // Definisci un oggetto che rappresenti un garage. Dovrà contenere una lista di automobili.
@@ -626,3 +613,112 @@ garage.addCars(car5);
 
 garage.returnCarDetails();
 garage.returnCarBrand();
+
+
+
+// **Esercizio 4**
+
+// Scrivi una funzione che, per il sito www.lamiasuperlibreria.aulab, prenda in input la lista
+//“libri” ed una “categoria” passata dall’utente.
+//Il programma dovrà ritornare una lista di tag anchor
+// (naturalmente questi devono essere delle semplici stringhe da mostrare in console)
+// con il relativo url e come contenuto il titolo del libro.
+// Questa lista dovrà contenere  solo gli elementi appartenenti alla categoria espressa in input.
+
+// La creazione della url dovrà rispettare queste regole:
+
+// - tutte le lettere devono essere minuscole
+// - gli spazi devono essere sostituiti con il simbolo “-”
+// - la prima parte della url sarà il nome dell’autore e l’ultima il nome del libro unito a “.html”
+
+// esempio lista libri:
+
+// ```jsx
+// const LIBRI = [
+//   {
+//     titolo: "Il Signore degli Anelli",
+//     autore: "Tolkien",
+//     categoria: "fantasy"
+//   },
+//   {
+//     titolo: "Harry Potter",
+//     autore: "Rowling",
+//     categoria: "fantasy",
+//   },
+//   {
+//     titolo: "Il Conte di Montecristo",
+//     autore: "Dumas",
+//     categoria: "narrativa classica"
+//   },
+//   {
+//     titolo: "Dune",
+//     autore: "Herbert",
+//     categoria: "fantascienza"
+//   },
+//   {
+//     titolo: "Fight Club",
+//     autore: "Palahniuk",
+//     categoria: "narrativa moderna"
+//   }
+// ]
+// ```
+
+// esempio url:
+
+// `www.lamiasuperlibreria.aulab/tolkien/il-signore-degli-anelli.html`
+
+// esempio tag anchor:
+
+// `<a href=”www.lamiasuperlibreria.aulab/tolkien/il-signore-degli-anelli.html”>Il signore degli anelli</a>`
+
+// esempio output finale:
+// [
+// 	'<a href=”www.lamiasuperlibreria.aulab/tolkien/il-signore-degli-anelli.html”>Il signore degli anelli</a>',
+// 	'<a href=”www.lamiasuperlibreria.aulab/herbert/dune.html”>Dune</a>'
+// ]
+
+/*
+
+// variable of user input category
+let userCategory = prompt(`write the category`);
+
+// array books
+const BOOKS = [
+  {
+    title: "Il Signore degli Anelli",
+    author: "Tolkien",
+    category: "fantasy",
+  },
+  {
+    title: "Harry Potter",
+    author: "Rowling",
+    category: "fantasy",
+  },
+  {
+    title: "Il Conte di Montecristo",
+    author: "Dumas",
+    category: "narrativa classica",
+  },
+  {
+    title: "Dune",
+    author: "Herbert",
+    category: "fantascienza",
+  },
+  {
+    title: "Fight Club",
+    author: "Palahniuk",
+    category: "narrativa moderna",
+  },
+];
+
+
+// create links function
+const createLinks = ()=> {
+    BOOKS.forEach(book => {
+        console.log(book.category);
+    });
+};
+
+console.log(createLinks());
+
+*/
