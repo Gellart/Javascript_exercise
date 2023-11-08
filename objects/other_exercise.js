@@ -557,7 +557,7 @@ checkArray();
 
 */
 
-
+/*
 
 // **Esercizio 3**
 
@@ -614,7 +614,9 @@ garage.addCars(car5);
 garage.returnCarDetails();
 garage.returnCarBrand();
 
+*/
 
+/*
 
 // **Esercizio 4**
 
@@ -677,7 +679,7 @@ garage.returnCarBrand();
 // 	'<a href=”www.lamiasuperlibreria.aulab/herbert/dune.html”>Dune</a>'
 // ]
 
-/*
+
 
 // variable of user input category
 let userCategory = prompt(`write the category`);
@@ -708,17 +710,543 @@ const BOOKS = [
     title: "Fight Club",
     author: "Palahniuk",
     category: "narrativa moderna",
-  },
+  },     
 ];
 
 
-// create links function
-const createLinks = ()=> {
-    BOOKS.forEach(book => {
-        console.log(book.category);
+// function that create the links
+const createLinks = (list, category)=> {
+    // formatted the user category
+    const formattedCategory = category.toLowerCase().replace(/\s+/g, "-");
+    // let's filter the array
+    const filteredBooks = list.filter(book => {
+        return book.category.toLowerCase === formattedCategory;
+    });
+    // let's create the links
+    const links = filteredBooks.map(book => {
+        const formattedAuthor = book.author.toLowerCase();
+        const formattedTitle = book.title.toLowerCase().replace(/\s+/g, "-");
+        const url = `www.lamiasuperlibreria.aulab/${formattedAuthor}/${formattedTitle}.html`;
+        return `<a href=”${url}.html”>${book.title}</a>`;
+        
+    });
+    return links;
+}
+
+const anchorTag = createLinks(BOOKS, userCategory);
+console.log(anchorTag);
+
+*/
+
+/*
+
+// **Esercizio 1**
+
+// Scrivi una funzione Javascript che stampi in console se un libro è stato letto o meno controllando la proprietà dell’oggetto `readingStatus`
+
+// ```jsx
+// const library = [ 
+//     {
+//         title: 'Bill Gates',
+//         author: 'The Road Ahead',
+//         readingStatus: true
+//     },
+//     {
+//         title: 'Steve Jobs',
+//         author: 'Walter Isaacson',
+//         readingStatus: true
+//     },
+//     {
+//         title: 'Mockingjay: The Final Book of The Hunger Games',
+//         author: 'Suzanne Collins',
+//         readingStatus: false
+//     }
+// ];
+// ```
+
+// - Se la proprietà è true allora stampare a console:
+// `${titolo del libro} di ${autore del libro} è stato letto!`
+// - Se la proprietà è false allora stampare a console:
+    
+//     `${titolo del libro} di ${autore del libro} non è ancora stato letto!`
+
+
+const library = [ 
+    {
+        title: 'Bill Gates',
+        author: 'The Road Ahead',
+        readingStatus: true
+    },
+    {
+        title: 'Steve Jobs',
+        author: 'Walter Isaacson',
+        readingStatus: true
+    },
+    {
+        title: 'Mockingjay: The Final Book of The Hunger Games',
+        author: 'Suzanne Collins',
+        readingStatus: false
+    }
+];
+
+// function that check if the book has been read or not
+const checkBookStatus = (library)=> {
+    // library.forEach(book => {
+    //     if (book.readingStatus == true) {
+    //         console.log(`${book.title} by ${book.author} has been read!`); 
+    //     } else {
+    //         console.log(`${book.title} by ${book.author} hasn't been read!`); 
+    //     }
+    // });
+    // refactoring---------------------
+    return library.map(book=> {
+        return {
+
+            title: book.title,
+            author: book.author,
+            status: book.readingStatus ? 'has been read' : `hasn't been read`
+
+        };
     });
 };
 
-console.log(createLinks());
+// const bookStatus = checkBookStatus(library);
+// console.log(bookStatus);
+
+// refactoring--------------
+const bookStatus = checkBookStatus(library);
+bookStatus.forEach(book => {
+    console.log(`${book.title} by ${book.author} ${book.status}!`);
+});
 
 */
+
+/*
+
+// **Esercizio 2**
+
+// Definisci un oggetto che rappresenti una sala da bowling, dovrà contenere 
+// un’array di giocatori che saranno formati dalle proprietà, nome e punteggi.
+
+// Creare una funzione che calcoli il totale di ogni giocatore e estragga il 
+// vincitore della partita.
+
+// const bowling = {
+//     players: [
+//       { name: "Giocatore 1", scores: [10, 7, 9, 7, 6, 10, 10, 9, 10, 8, 7, 10, 10, 10, 9, 8, 10] },
+//       { name: "Giocatore 2", scores: [9, 8, 10, 10, 7, 10, 10, 10, 9, 10, 8, 7, 10, 10, 10, 9, 10] },
+//       { name: "Giocatore 3", scores: [10, 10, 7, 8, 10, 7, 9, 8, 10, 10, 10, 9, 8, 10, 10, 10, 7] }
+//     ]
+//   };
+
+//   // Expected output: Il Vincitore è il Giocatore 2 con 157 punti totali
+
+//   **TIP**: LAVORATE CON LE FUNZIONI.
+
+// Ad es: `checkWinner(bowling)`
+
+// **TIP**: Aggiungete una proprietà `total` per ogni oggetto Player `{ name: “xxx”, scores: [7, 9, 10], total: 123 }`
+
+
+
+const bowling = {
+    players: [
+        { name: "Giocatore 1", scores: [10, 7, 9, 7, 6, 10, 10, 9, 10, 8, 7, 10, 10, 10, 9, 8, 10] },
+        { name: "Giocatore 2", scores: [9, 8, 10, 10, 7, 10, 10, 10, 9, 10, 8, 7, 10, 10, 10, 9, 10] },
+        { name: "Giocatore 3", scores: [10, 10, 7, 8, 10, 7, 9, 8, 10, 10, 10, 9, 8, 10, 10, 10, 7] }
+    ]
+};
+
+// function that calculate the the player's score
+const calculateScore = ()=> {
+    // variable for the totalscore
+    const totalScore = bowling.players.map(player=> {
+        const total
+    })
+}
+
+*/
+
+
+/*
+
+// ### Exercise 1:
+// Create an object representing a person with 
+// properties: name, age, and city. Print the person's information to the console.
+
+// person object
+const persons = {
+    name: "gino",
+    age: 92,
+    city: "Rome"
+};
+
+// function that return person details
+const personDetails = (persons)=> {
+    return `Hi I'm ${persons.name}, form ${persons.city} and I have ${persons.age}`;
+};
+
+let gino = personDetails(persons);
+console.log(gino);
+
+*/
+
+/*
+
+// ### Exercise 2:
+// Create an object representing a book with 
+// properties: title, author, and year. Print the book's information to the console.
+
+// book obj
+// person object
+const book = {
+    title: "Bersek",
+    author: "Kentarō Miura",
+    year: "August 25, 1989"
+};
+
+// function that return person details
+const bookDetails = (book)=> {
+    return `${book.title}, by ${book.author} released in ${book.year}`;
+};
+
+let bersek = bookDetails(book);
+console.log(bersek);
+
+*/
+
+/*
+
+// ### Exercise 5:
+// Create an object representing a student with 
+// properties: name, age, grades (an array of numbers), and calculate the average grade. Print the student's information, including the average grade, to the console.
+
+// student obj
+const student = {
+    name: "Luke",
+    age: 23,
+    grades: [55, 99, 84, 47]
+};
+
+// function for calculate the average grades
+const calculateAverage = (student)=> {
+    const sum = student.grades.reduce((accumulator, currentValue)=> {
+        return accumulator + currentValue;
+    },0)
+    let average = sum /  student.grades.length;
+    let userAverage = `Name: ${student.name}` + `\n` +  `Age: ${student.age}` + `\n` + `Average: ${average}`;
+    return userAverage;
+};
+
+let result = calculateAverage(student);
+console.log(result);
+
+*/
+
+/*
+
+// ### Exercise 6:
+// Create an object representing a restaurant with 
+// properties: name, cuisine, and menu (an array of dish names). Print the restaurant's menu to the console.
+
+const restaurant = {
+    name: "King",
+    cuisine: "kebab",
+    menu: ["kebab", "pizza kebab", "phalaphel", "umus"],
+};
+
+const returnMenu = (restaurant)=> {
+    return restaurant.menu;
+};
+
+console.log(returnMenu(restaurant));
+
+*/
+
+/*
+
+// Create an object representing a person. 
+// Include properties for name, age, gender, and a method to display a greeting 
+// message using the person's name and age.
+
+// person obj
+const person = {
+    name: "gino",
+    age: 26,
+    gender: "Male",
+};
+
+const personInformation = (person)=> {
+    return `Hi, I'm ${person.name} and I have ${person.age} years old`;
+};
+
+let gino = personInformation(person);
+console.log(gino);
+
+*/
+
+/*
+
+// Create an object representing a social media post. 
+// Include properties like author, message, likes, and comments 
+// (an array of objects with user and text properties). 
+// Write methods to add a like, add a comment, and display all comments.
+
+// spcial media obbj
+const socialMedia = {
+    author: "gino",
+    message: "Hi",
+    likes: 10,
+    comments: [
+        {
+            user: "Luke",
+            text: "welcome",
+        },
+        {
+            user: "Mark",
+            text: "Nice to meet you",
+        },
+        {
+            user: "Sandy",
+            text: "great",
+        },
+        {
+            user: "Danzell",
+            text: "let's start!",
+        },
+    ],
+    // method for add likes
+    addLikes(like) {
+        this.likes += like;
+        console.log(`Likes: ${this.likes}`);
+    },
+    // method for add comments
+    addComments(comments) {
+        this.comments.push(comments);
+        this.comments.forEach(comment => {
+            console.log(comment);
+        });
+    },
+    // method for see all the comments
+    seeComments() {
+        this.comments.forEach(comment => {
+            console.log(`User: ${comment.user}` + `\n` + `Comment: ${comment.text}`)
+        })
+    }
+
+};
+
+class Comments {
+    constructor(user, text){
+        this.user = user;
+        this.text = text;
+    }
+}
+
+let like1 = 1;
+let comment1 = new Comments("Jack", "incredible!!!");
+
+socialMedia.addLikes(like1);
+socialMedia.addComments(comment1);
+socialMedia.seeComments();
+
+*/
+
+
+/*
+
+// Definisci un oggetto **playlist** che contiene una proprietà **canzoni**. La prorietà canzoni dovrà essere un array.
+
+// Inserisci una o 2 canzoni in maniera dinamica e ciascuna deve avere le seguenti proprietà:
+
+// - titolo
+// - nomeCantante
+// - anno
+
+// Ad ogni canzone inserita stampa in console tutte le canzoni.
+
+
+const playlist = {
+    // array of song
+    songs: [],
+    // method that add songs
+    addSong(title, author, year){
+        // obj for the song
+        const song = {
+            title: title,
+            author: author,
+            year: year,
+        };
+        // push the song inside the array 
+        this.songs.push(song);
+        // let's see inside the array
+        this.songs.forEach(song =>{
+            console.log(`${song.title} by ${song.author}, in the ${song.year}`)
+        });
+
+    },
+};
+
+
+playlist.addSong("Hotel California", "Eagles", 1976);
+playlist.addSong("Monster", "Eminem", 2013);
+
+*/
+
+
+
+
+// Definisci un oggetto **rubrica** che ha come proprietà gli **utenti**. 
+// Per ogni utente specificare altre proprietà: **nome**, **cognome**, **telefono** e **indirizzo**. 
+// Dove indirizzo è a sua volta un altro oggetto contenente altre proprietà (via, città, ecc).
+
+// - Quindi popolare la rubrica con dei dati a piacere.
+// - Crea un metodo all’interno dell’oggetto che restituisca nome cognome e telefono.
+// - Dopo eliminare un elemento e visualizzare nuovamente la rubrica così ottenuta.
+// - Crea poi una funzione che scorra tutti gli utenti all’interno della rubrica.
+
+
+
+/*
+
+// Definisci un oggetto che rappresenti un garage. Dovrà contenere una lista di automobili.
+// Per ciascuna automobile dovrà essere definito un attributo marca e modello  (es {brand : ‘renault’ , model : ‘twingo’}).
+
+// Crea un metodo all’interno dell’oggetto che restituisca tutti i dati della macchina ad es: `“Renault - Twingo”`
+
+// Scrivi poi una funzione che stampi in console tutti i modelli presenti nel garage.
+
+// garage obj
+const garage = {
+    cars:[],
+    addCars(brand, model) {
+        const car = {
+            brand: brand,
+            model: model
+        };
+
+        this.cars.push(car);
+        return car;
+    },
+    
+    displayCar() {
+        this.cars.forEach(car => {
+            console.log(`Model: ${car.model}`); 
+        });
+        return this.cars;
+    },
+
+    displayAllCars() {
+        for(const car of this.cars){
+            console.log(`Brand: ${car.brand}, Model: ${car.model}`);
+        }
+        return this.cars;
+    }
+
+
+}
+
+let car1 = garage.addCars("Ford", "Mustang Dark Horse");
+let car2 = garage.addCars("Nissan", "GTR R35");
+let car3 = garage.addCars("Lamborghini", "Huracan");
+let car4 = garage.addCars("Porche", "GTR3 RS");
+console.log(garage.displayCar());
+console.log(garage.displayAllCars());
+
+*/
+
+
+
+// Scrivi una funzione che, per il sito www.lamiasuperlibreria.aulab, prenda in input la lista “libri” ed una “categoria” passata dall’utente. 
+// Il programma dovrà ritornare una lista di tag anchor (naturalmente questi devono essere delle semplici stringhe da mostrare in console) con il relativo url e come contenuto il titolo del libro. 
+// Questa lista dovrà contenere  solo gli elementi appartenenti alla categoria espressa in input.
+
+// La creazione della url dovrà rispettare queste regole:
+
+// - tutte le lettere devono essere minuscole
+// - gli spazi devono essere sostituiti con il simbolo “-”
+// - la prima parte della url sarà il nome dell’autore e l’ultima il nome del libro unito a “.html”
+
+// esempio lista libri:
+
+// const LIBRI = [
+//     {
+//       titolo: "Il Signore degli Anelli",
+//       autore: "Tolkien",
+//       categoria: "fantasy"
+//     },
+//     {
+//       titolo: "Harry Potter",
+//       autore: "Rowling",
+//       categoria: "fantasy",
+//     },
+//     {
+//       titolo: "Il Conte di Montecristo",
+//       autore: "Dumas",
+//       categoria: "narrativa classica"
+//     },
+//     {
+//       titolo: "Dune",
+//       autore: "Herbert",
+//       categoria: "fantascienza"
+//     },
+//     {
+//       titolo: "Fight Club",
+//       autore: "Palahniuk",
+//       categoria: "narrativa moderna"
+//     }
+//   ]
+
+//   esempio url:
+
+//   `www.lamiasuperlibreria.aulab/tolkien/il-signore-degli-anelli.html`
+
+//   esempio tag anchor:
+
+//   `<a href=”www.lamiasuperlibreria.aulab/tolkien/il-signore-degli-anelli.html”>Il signore degli anelli</a>`
+
+//   esempio output finale:
+
+//   [ 
+// 	'<a href=”www.lamiasuperlibreria.aulab/tolkien/il-signore-degli-anelli.html”>Il signore degli anelli</a>', 
+// 	'<a href=”www.lamiasuperlibreria.aulab/herbert/dune.html”>Dune</a>' 
+// ]
+
+
+const BOOKS = [
+    {
+        title: "Il Signore degli Anelli",
+        author: "Tolkien",
+        category: "fantasy"
+    },
+    {
+        title: "Harry Potter",
+        author: "Rowling",
+        category: "fantasy",
+    },
+    {
+        title: "Il Conte di Montecristo",
+        author: "Dumas",
+        category: "narrativa classica"
+    },
+    {
+        title: "Dune",
+        author: "Herbert",
+        category: "fantascienza"
+    },
+    {
+        title: "Fight Club",
+        author: "Palahniuk",
+        category: "narrativa moderna"
+    }
+];
+
+// function for create the links
+const createLinks = (list, category)=> {
+    const listBook = list;
+    const categoryByUser = category;
+
+    const links = listBook.map(book =>{
+        
+    })
+}

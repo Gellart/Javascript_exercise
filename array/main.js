@@ -270,7 +270,7 @@ console.log( result );
 
 */
 
-
+/*
 
 // **Esercizio 7 - BONUS**
 
@@ -318,3 +318,6 @@ console.log( convertToArray );
 // add 2 elements at the beginning of the array with the unshift mehod
 let add2NamesBeginning = convertToArray.unshift( `Gino`, `Peppino` );
 console.log( convertToArray );
+
+*/
+
